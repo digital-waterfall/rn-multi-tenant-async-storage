@@ -1,0 +1,44 @@
+{
+  "name": "rn-multi-tenant-async-storage",
+  "version": "0.0.1",
+  "description": "React native multi tenant async storage module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest --config=jest-setup.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digitalwaterfall/rn-multi-tenant-async-storage.git"
+  },
+  "keywords": [
+    "async-storage",
+    "react-native",
+    "multi-tenant"
+  ],
+  "author": "Digital Waterfall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/digitalwaterfall/rn-multi-tenant-async-storage/issues"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "homepage": "https://github.com/digitalwaterfall/rn-multi-tenant-async-storage#readme",
+  "devDependencies": {
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "jest": "^23.3.0",
+    "jest-react-native": "18.0.0"
+  },
+  "dependencies": {
+    "babel-jest": "^23.2.0",
+    "babel-preset-env": "^1.7.0",
+    "lodash": "^4.17.10",
+    "react": "^16.4.1",
+    "react-native": "0.55.3",
+    "react-dom": "16.4.1"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.55.2"
+  }
+}

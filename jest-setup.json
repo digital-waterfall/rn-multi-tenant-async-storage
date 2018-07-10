@@ -1,0 +1,10 @@
+{
+  "setupTestFrameworkScriptFile": "<rootDir>/jest-setup/jest-setup.js",
+  "testEnvironment": "jsdom",
+  "testRegex": "(src)/.*\\.spec\\.(js|jsx)$",
+  "preset": "jest-react-native",
+  "verbose": true,
+  "transformIgnorePatterns": [
+    "node_modules/(?!(jest-)?react-native)"
+  ]
+}
