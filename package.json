@@ -1,6 +1,6 @@
 {
   "name": "rn-multi-tenant-async-storage",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React native multi tenant async storage module",
   "main": "src/index.js",
   "scripts": {
@@ -28,17 +28,14 @@
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
     "jest": "^23.3.0",
-    "jest-react-native": "18.0.0"
-  },
-  "dependencies": {
+    "jest-react-native": "18.0.0",
     "babel-jest": "^23.2.0",
     "babel-preset-env": "^1.7.0",
-    "lodash": "^4.17.10",
-    "react": "^16.4.1",
-    "react-native": "0.55.3",
     "react-dom": "16.4.1"
   },
-  "peerDependencies": {
-    "react-native": ">=0.55.2"
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "react": "^16.4.1",
+    "react-native": "0.55.3"
   }
 }
