@@ -3,8 +3,6 @@ import _ from 'lodash';
 
 import storageService from '../storage-service';
 
-const { downloader, cache } = storageService.storageTenants;
-
 describe('storageService - Unit Test', () => {
     const mockString = 'I am a string';
     const mockData = {
@@ -26,7 +24,13 @@ describe('storageService - Unit Test', () => {
         ['CACHE#key2', JSON.stringify(mockData)]
     ];
 
+    let downloader, cache;
     beforeEach(() => {
+        storageService.clearStorageTenants();
+        storageService.addStorageTenant('downloader');
+        storageService.addStorageTenant('cache');
+        downloader = storageService.getStorageTenant('downloader');
+        cache = storageService.getStorageTenant('cache');
         AsyncStorage.getItem = jest
             .fn()
             .mockImplementation(() => Promise.resolve(JSON.stringify(mockData)))
@@ -297,6 +301,27 @@ describe('storageService - Unit Test', () => {
                 expect(error).toBeNull();
                 done();
             });
+        });
+    });
+
+    describe('Manage storage tenants', () => {
+
+        it('should add a storage tenant if it is not in the list', () => {
+            const mockTenantKey = 'memes galore';
+            storageService.clearStorageTenants();
+            const mockStorageTenants = {
+                memesGalore: 'MEMES_GALORE'
+            };
+            storageService.addStorageTenant(mockTenantKey);
+            const storageTenants = storageService.getStorageTenants();
+            expect(storageTenants).toEqual(mockStorageTenants);
+        });
+
+        it('should remove a storage tenant if it is in the list', () => {
+            const mockTenantKey = 'downloader';
+            storageService.removeStorageTenant(mockTenantKey);
+            const storageTenants = storageService.getStorageTenants();
+            expect(storageTenants[mockTenantKey]).toBeFalsy();
         });
     });
 });

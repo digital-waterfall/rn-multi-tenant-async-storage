@@ -1,10 +1,37 @@
 import { AsyncStorage } from 'react-native';
 import _ from 'lodash';
 
-const storageTenants = {
-    downloader: 'DOWNLOADER',
-    cache: 'CACHE'
-};
+let storageTenants = {};
+
+function addStorageTenant(tenantKey){
+    tenantKey = _.camelCase(tenantKey);
+    if(!_.has(storageTenants, tenantKey)){
+        _.update(storageTenants, tenantKey, () => _.toUpper(_.snakeCase(tenantKey)));
+    }
+}
+
+function removeStorageTenant(tenantKey){
+    tenantKey = _.camelCase(tenantKey);
+    if(_.has(storageTenants, tenantKey )){
+        storageTenants = _.omit(storageTenants, tenantKey);
+    }
+}
+
+function clearStorageTenants(){
+    storageTenants = {};
+}
+
+function getStorageTenants(){
+    return _.cloneDeep(storageTenants);
+}
+
+function getStorageTenant(tenantKey){
+    tenantKey = _.camelCase(tenantKey);
+    if(_.has(storageTenants, tenantKey)){
+        return storageTenants[tenantKey];
+    }
+    return undefined;
+}
 
 function getItem(tenant, key) {
     return AsyncStorage.getItem(`${tenant}#${key}`).then(storageObjectString => {
@@ -60,7 +87,11 @@ function multiRemove(tenant, keys) {
 }
 
 export default {
-    storageTenants,
+    getStorageTenant,
+    getStorageTenants,
+    addStorageTenant,
+    clearStorageTenants,
+    removeStorageTenant,
     getItem,
     setItem,
     removeItem,
