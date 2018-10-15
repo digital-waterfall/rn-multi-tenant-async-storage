@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/digitalwaterfall/rn-multi-tenant-async-storage.git"
+    "url": "https://github.com/digital-waterfall/rn-multi-tenant-async-storage"
   },
   "keywords": [
     "async-storage",
